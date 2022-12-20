@@ -48,7 +48,7 @@ const EmploysCrud = () => {
           ></input>
           <span class="input-group-text" id="basic-addon1">
             <button onClick={handleClick} type="button" class="btn btn-primary">
-              Seaarch
+              Filter
             </button>
           </span>
         </div>
