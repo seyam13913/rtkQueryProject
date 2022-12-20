@@ -13,17 +13,21 @@ const EmploysCrud = () => {
     setPrivEmploy(employs);
   }, [employs]);
 
-  const handleChang = (e) => {
-    const changeValue = e.target.value;
+  const handleClick = (e) => {
+    e.preventDefault();
 
-    if (changeValue !== "") {
+    if (changeData !== "") {
       const filterEmploy = employs.filter((user) => {
-        return user.name.toLowerCase().includes(changeValue.toLowerCase());
+        return user.name.toLowerCase().includes(changeData.toLowerCase());
       });
       setPrivEmploy(filterEmploy);
     } else {
       setPrivEmploy(employs);
     }
+  };
+
+  const handleChang = (e) => {
+    const changeValue = e.target.value;
 
     setChangeData(changeValue);
   };
@@ -32,14 +36,22 @@ const EmploysCrud = () => {
     <div>
       <h2>Employ</h2>
       <div class="col-auto row g-3">
-        <input
-          type="text"
-          class="form-control"
-          value={changeData}
-          onChange={handleChang}
-          id="inputPassword2"
-          placeholder="Search"
-        ></input>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            value={changeData}
+            onChange={handleChang}
+            placeholder="Search"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          ></input>
+          <span class="input-group-text" id="basic-addon1">
+            <button onClick={handleClick} type="button" class="btn btn-primary">
+              Search
+            </button>
+          </span>
+        </div>
       </div>
       <table class="table table-striped">
         <thead>
@@ -47,6 +59,7 @@ const EmploysCrud = () => {
             <th>Si-No</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -58,6 +71,20 @@ const EmploysCrud = () => {
                   <td>{index + 1}</td>
                   <td>{name}</td>
                   <td>{email}</td>
+                  <td>
+                    <div class="d-grid gap-2 d-md-block">
+                      <button
+                        class="btn btn-primary"
+                        style={{ marginRight: "1rem" }}
+                        type="button"
+                      >
+                        Edit
+                      </button>
+                      <button class="btn btn-primary" type="button">
+                        Delete
+                      </button>
+                    </div>
+                  </td>
                 </tr>
               );
             })}

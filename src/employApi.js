@@ -5,12 +5,24 @@ export const employApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://63a02e2f24d74f9fe8307c15.mockapi.io/",
   }),
+  tagTypes: "employ",
   endpoints: (builder) => ({
     getEmploys: builder.query({
       query: () => ({
         url: "users",
         method: "GET",
       }),
+      providesTags: "employ",
+    }),
+    addEmploys: builder.query({
+      query: () => ({
+        url: "users",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }),
+      providesTags: "employ",
     }),
   }),
 });
