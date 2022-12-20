@@ -4,6 +4,7 @@ import { useGetEmploysQuery } from "../employApi";
 const EmploysCrud = () => {
   const getData = useGetEmploysQuery();
   const employs = getData.data;
+  console.log(employs);
 
   const [privEmploy, setPrivEmploy] = useState(employs);
   console.log(privEmploy);
@@ -52,17 +53,13 @@ const EmploysCrud = () => {
             </button>
           </span>
         </div>
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-primary" type="button">
-            Add Employ
-          </button>
-        </div>
       </div>
       <table class="table table-striped">
         <thead>
           <tr>
             <th>Si-No</th>
             <th>Name</th>
+            <th>Address</th>
             <th>Email</th>
             <th>Action</th>
           </tr>
@@ -70,11 +67,12 @@ const EmploysCrud = () => {
         <tbody>
           {privEmploy &&
             privEmploy?.map((user, index) => {
-              const { id, name, email } = user;
+              const { id, name, email, address } = user;
               return (
                 <tr key={id}>
                   <td>{index + 1}</td>
                   <td>{name}</td>
+                  <td>{address}</td>
                   <td>{email}</td>
                   <td>
                     <div class="d-grid gap-2 d-md-block">
