@@ -48,9 +48,14 @@ const EmploysCrud = () => {
           ></input>
           <span class="input-group-text" id="basic-addon1">
             <button onClick={handleClick} type="button" class="btn btn-primary">
-              Filter
+              Search
             </button>
           </span>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-primary" type="button">
+            Add Employ
+          </button>
         </div>
       </div>
       <table class="table table-striped">
